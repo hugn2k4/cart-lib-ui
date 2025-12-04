@@ -32,7 +32,7 @@ npm install react react-dom @mui/material @emotion/react @emotion/styled @mui/ic
 ## 🚀 Quick Start
 
 ```tsx
-import { CartProvider, CartList, CartAddForm } from '@hugn10204/cart-lib-ui';
+import { CartProvider, CartList, CartAddForm } from "@hugn10204/cart-lib-ui";
 
 function App() {
   return (
@@ -40,10 +40,7 @@ function App() {
       <div>
         <h1>My Shop</h1>
         <CartAddForm />
-        <CartList 
-          showCheckoutButton 
-          onCheckout={() => alert('Proceeding to checkout!')} 
-        />
+        <CartList showCheckoutButton onCheckout={() => alert("Proceeding to checkout!")} />
       </div>
     </CartProvider>
   );
@@ -57,17 +54,15 @@ function App() {
 Wrap your app with `CartProvider` to enable cart functionality.
 
 ```tsx
-import { CartProvider } from '@hugn10204/cart-lib-ui';
+import { CartProvider } from "@hugn10204/cart-lib-ui";
 
-<CartProvider 
-  initialItems={[]}
-  onCartChange={(state) => console.log('Cart updated:', state)}
->
+<CartProvider initialItems={[]} onCartChange={(state) => console.log("Cart updated:", state)}>
   {/* Your app */}
-</CartProvider>
+</CartProvider>;
 ```
 
 **Props:**
+
 - `initialItems?: CartItem[]` - Initial cart items
 - `onCartChange?: (state: CartState) => void` - Callback when cart changes
 
@@ -76,11 +71,11 @@ import { CartProvider } from '@hugn10204/cart-lib-ui';
 Access cart state and methods anywhere in your app.
 
 ```tsx
-import { useCart } from '@hugn10204/cart-lib-ui';
+import { useCart } from "@hugn10204/cart-lib-ui";
 
 function MyComponent() {
   const { items, totalPrice, addItem, removeItem, updateQuantity, clearCart } = useCart();
-  
+
   return (
     <div>
       <p>Total: ${totalPrice.toFixed(2)}</p>
@@ -95,15 +90,15 @@ function MyComponent() {
 Display all cart items with totals and checkout button.
 
 ```tsx
-import { CartList } from '@hugn10204/cart-lib-ui';
+import { CartList } from "@hugn10204/cart-lib-ui";
 
 <CartList
   showTotal={true}
   showCheckoutButton={true}
-  onCheckout={() => console.log('Checkout clicked')}
+  onCheckout={() => console.log("Checkout clicked")}
   emptyMessage="Your cart is empty"
   checkoutButtonText="Checkout"
-/>
+/>;
 ```
 
 ### CartItem
@@ -111,15 +106,15 @@ import { CartList } from '@hugn10204/cart-lib-ui';
 Display a single cart item (used internally by CartList, can be used standalone).
 
 ```tsx
-import { CartItem } from '@hugn10204/cart-lib-ui';
+import { CartItem } from "@hugn10204/cart-lib-ui";
 
 <CartItem
   item={myItem}
-  onRemove={(id) => console.log('Remove', id)}
-  onUpdateQuantity={(id, qty) => console.log('Update', id, qty)}
+  onRemove={(id) => console.log("Remove", id)}
+  onUpdateQuantity={(id, qty) => console.log("Update", id, qty)}
   showRemoveButton={true}
   showQuantityControls={true}
-/>
+/>;
 ```
 
 ### CartAddForm
@@ -127,12 +122,9 @@ import { CartItem } from '@hugn10204/cart-lib-ui';
 Form to add new products to cart.
 
 ```tsx
-import { CartAddForm } from '@hugn10204/cart-lib-ui';
+import { CartAddForm } from "@hugn10204/cart-lib-ui";
 
-<CartAddForm
-  onAdd={(item) => console.log('Added:', item)}
-  buttonText="Add to Cart"
-/>
+<CartAddForm onAdd={(item) => console.log("Added:", item)} buttonText="Add to Cart" />;
 ```
 
 ### ProductCard
@@ -140,11 +132,11 @@ import { CartAddForm } from '@hugn10204/cart-lib-ui';
 Beautiful product card with add to cart button.
 
 ```tsx
-import { ProductCard, useCart } from '@hugn10204/cart-lib-ui';
+import { ProductCard, useCart } from "@hugn10204/cart-lib-ui";
 
 function Products() {
   const { addItem } = useCart();
-  
+
   return (
     <ProductCard
       id="1"
@@ -164,13 +156,13 @@ function Products() {
 All components use Material-UI and respect your MUI theme. Customize by wrapping with `ThemeProvider`:
 
 ```tsx
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { CartProvider, CartList } from '@hugn10204/cart-lib-ui';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { CartProvider, CartList } from "@hugn10204/cart-lib-ui";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#1976d2',
+      main: "#1976d2",
     },
   },
 });
@@ -191,19 +183,15 @@ function App() {
 Full TypeScript support with exported types:
 
 ```tsx
-import type { 
-  CartItemType, 
-  CartState, 
-  CartContextType 
-} from '@hugn10204/cart-lib-ui';
+import type { CartItemType, CartState, CartContextType } from "@hugn10204/cart-lib-ui";
 
 const myItem: CartItemType = {
-  id: '1',
-  name: 'Product',
+  id: "1",
+  name: "Product",
   price: 19.99,
   quantity: 2,
-  image: 'https://example.com/image.jpg',
-  description: 'Product description'
+  image: "https://example.com/image.jpg",
+  description: "Product description",
 };
 ```
 
